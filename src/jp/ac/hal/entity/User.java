@@ -6,7 +6,7 @@ public class User {
     this.name = name;
     this.address = address;
   }
-  int id;
-  String name;
-  String address;
+  public int id;
+  public String name;
+  public String address;
 }

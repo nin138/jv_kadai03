@@ -1,14 +1,15 @@
 package jp.ac.hal.DB.Connector;
 
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
-abstract class DBConnector implements AutoCloseable {
-  abstract protected void getConnection() throws SQLException;
-  abstract protected void buildStatement(String sql, String[] args) throws SQLException;
-  abstract protected void execUpdate(String sql, String[] args) throws SQLException;
-  abstract protected void execUpdate(String sql) throws SQLException;
-  abstract protected ResultSet execQuery(String sql, String[] args) throws SQLException;
-  abstract protected ResultSet execQuery(String sql) throws SQLException;
+public abstract class DBConnector implements AutoCloseable {
+  public Connection connection = null;
+  public PreparedStatement preparedStatement = null;
+  public ResultSet resultSet = null;
+  abstract public void getConnection() throws SQLException;
 }
