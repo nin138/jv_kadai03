@@ -12,4 +12,5 @@ public abstract class DBConnector implements AutoCloseable {
   public PreparedStatement preparedStatement = null;
   public ResultSet resultSet = null;
   abstract public void getConnection() throws SQLException;
+  abstract public void close();
 }

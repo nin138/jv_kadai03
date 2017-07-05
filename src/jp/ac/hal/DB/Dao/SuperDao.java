@@ -35,7 +35,7 @@ abstract class SuperDao implements AutoCloseable {
     return this.execQuery(sql, args);
   }
   @Override
-  public void close() throws Exception {
+  public void close() {
     connector.close();
   }
 }

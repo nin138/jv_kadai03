@@ -2,5 +2,5 @@
 out
 META-INF
 sql
-web/WEB-INF
+web/WEB-INF/lib
 jv_kadao03.iml
