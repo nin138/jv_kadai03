@@ -5,10 +5,10 @@ import java.sql.SQLException;
 import jp.ac.hal.DB.Connector.ConnectorFactory;
 import jp.ac.hal.DB.Connector.DBConnector;
 
-abstract public class SuperDao {
+abstract class SuperDao implements AutoCloseable {
   private DBConnector connector;
-  SuperDao(String url, String name, String password) throws SQLException {
-    connector = ConnectorFactory.getDBConnector(url, name, password);
+  SuperDao(String url, String user, String password) throws SQLException {
+    connector = ConnectorFactory.getDBConnector(url, user, password);
     connector.getConnection();
   }
   private void buildStatement(String sql, String[] args) throws SQLException {
@@ -33,5 +33,9 @@ abstract public class SuperDao {
   protected ResultSet execQuery(String sql) throws SQLException {
     String[] args = {};
     return this.execQuery(sql, args);
+  }
+  @Override
+  public void close() throws Exception {
+    connector.close();
   }
 }
